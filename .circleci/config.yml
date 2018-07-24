@@ -17,9 +17,9 @@ image_config: &image_config
 
   RUBY_VERSION_NUM: 2.1.8
 
-  # NODE_VERSION_NUM: # pick a version from https://nodejs.org/dist
+  # # NODE_VERSION_NUM: # pick a version from https://nodejs.org/dist
 
-  # PYTHON_VERSION_NUM: # pick a version from https://python.org/ftp/python
+  # # PYTHON_VERSION_NUM: # pick a version from https://python.org/ftp/python
 
   JAVA: false
 
@@ -41,25 +41,25 @@ jobs:
     steps:
       - checkout
 
-##      - run: bash scripts/generate.sh > Dockerfile
+      - run: bash scripts/generate.sh > Dockerfile
 
-##      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-##      - run: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
+      - run: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
 
-##      - run: docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG && sleep 10
+      - run: docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG && sleep 10
 
-##      - store_artifacts:
-##          path: Dockerfile
+      - store_artifacts:
+          path: Dockerfile
 
-##  test_image:
-##    docker:
-##      - image: $DOCKER_USERNAME/ruby-2.1.8:ruby-2.1.8
-##        environment:
-##          <<: *image_config
+  test_image:
+    docker:
+      - image: $DOCKER_USERNAME/ruby-2.1.8:ruby-2.1.8
+        environment:
+          <<: *image_config
 
-##    steps:
-##      - checkout
+    steps:
+      - checkout
 
 ##      - run:
 ##          name: start Xvfb for phantomjs test
